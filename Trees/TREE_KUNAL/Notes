@@ -1,0 +1,72 @@
+Tree -- 
+inserting , deletion ==== O(logN)
+Ordered storage
+Cost efficient
+
+
+
+limitations
+* Unbalanced Binary tree(Skewed Binary tree)
+* inserting , deletion ==== O(N)
+
+
+where trees are used????????
+* File systems
+* Databases
+* Algoriths / networking
+* Maths
+* Decision trees (Machine learning)
+* Compession of file (Huffman coding)
+* Future datastructures
+
+
+888888888888888888888888888888888888888888888888888888888888888888888
+888888888888888888888888888888888888888888888888888888888888888888888
+
+Properties of binary tree
+size == Total number of node
+Siblings,child , parent ,edge, height, ansistors, decendent
+Height == maximum number of edges(bottom to up)(from leaf node to particular node)
+level == difference of height between that node and root node (hight difference)
+root level = 0
+
+
+
+****************************************************************************************
+
+Types of binary tree
+* Complete Binary tree (last level fill from left)
+* full binary tree / Strict binary tree (each node should have either 0 or 2)
+* Perfect binary tree (All levels are full mus have 2 children except the leaf nodes)
+* Height balanced (avg height [O(logN)])
+* Skewed Binary tree
+* Ordered Binary tree (Every node has some property)
+
+
+*******************************************************************************************
+
+1. Perfectt BT , 
+    height = 2^(h+1)-1
+    leaf node = 2^h 
+    internal nodes = 2^h+1 - 1 - 2^h = 2^h - 1
+    N = no of leaves
+        log(N+1) levels at least
+    N = nodes
+        log(N+1) min levels
+
+2. Strict binary tree
+    N = leaf nodes
+        n+1 internalnodes
+        No of leaf nodes = no of internal nodes + 1
+
+Degree =  max number of children
+No of leaf nodes = 1 + no of internal ndes which have 2 children
+
+
+*****************************************************************************************************
+
+
+Implementation
+
+1. Linked representation
+2. Sequential representation (using array)

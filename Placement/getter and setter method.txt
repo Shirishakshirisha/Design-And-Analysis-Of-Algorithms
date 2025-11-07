@@ -1,0 +1,174 @@
+In Java, **getter** and **setter** methods are used to access and modify the private fields (variables) of a class. They follow the principle of **encapsulation**, which restricts direct access to the class's fields and enforces control over how the data is accessed or updated.
+
+---
+
+## **What Are Getter and Setter Methods?**
+
+1. **Getter Methods**:
+   - Used to **retrieve the value** of a private field.
+   - Follows the naming convention: `get<FieldName>()`.
+
+2. **Setter Methods**:
+   - Used to **set or update the value** of a private field.
+   - Follows the naming convention: `set<FieldName>(value)`.
+
+---
+
+### **Why Use Getter and Setter Methods?**
+
+1. **Encapsulation**:
+   - Fields are declared `private` to restrict direct access.
+   - Getter and setter methods allow controlled access, maintaining data integrity.
+
+2. **Validation**:
+   - Setter methods can include validation logic to ensure only valid data is assigned to fields.
+
+3. **Flexibility**:
+   - Allows you to add additional logic in the future (e.g., logging, derived properties).
+
+4. **Read-Only or Write-Only**:
+   - By providing only a getter or setter, you can make fields **read-only** or **write-only**.
+
+---
+
+### **How Getter and Setter Methods Work**
+
+#### Example: `Person` Class
+```java
+public class Person {
+    private String name; // private field
+    private int age;     // private field
+
+    // Getter for 'name'
+    public String getName() {
+        return name; // Returns the current value of 'name'
+    }
+
+    // Setter for 'name'
+    public void setName(String name) {
+        this.name = name; // Updates the field 'name'
+    }
+
+    // Getter for 'age'
+    public int getAge() {
+        return age; // Returns the current value of 'age'
+    }
+
+    // Setter for 'age'
+    public void setAge(int age) {
+        if (age >= 0) { // Validation: age must be non-negative
+            this.age = age;
+        } else {
+            System.out.println("Age cannot be negative.");
+        }
+    }
+}
+```
+
+---
+
+### **Key Points About Getter and Setter**
+
+1. **Naming Convention**:
+   - Getters start with `get`.
+   - Setters start with `set`.
+   - For boolean fields, getters often use `is<FieldName>()`.
+
+   Example for a boolean field:
+   ```java
+   private boolean isActive;
+
+   public boolean isActive() {
+       return isActive;
+   }
+
+   public void setActive(boolean active) {
+       this.isActive = active;
+   }
+   ```
+
+2. **Access Modifier**:
+   - Getters and setters are usually `public` so they can be accessed by other classes.
+
+3. **Data Validation**:
+   - Setters often include validation to ensure data integrity (e.g., non-negative age).
+
+4. **Encapsulation Principle**:
+   - Fields are `private`, and only getters and setters allow controlled access to them.
+
+---
+
+### **How to Use Getters and Setters**
+
+#### Example Usage:
+```java
+public class Main {
+    public static void main(String[] args) {
+        Person person = new Person();
+
+        // Using setter to set values
+        person.setName("Alice");
+        person.setAge(25);
+
+        // Using getter to get values
+        System.out.println("Name: " + person.getName());
+        System.out.println("Age: " + person.getAge());
+
+        // Trying invalid age
+        person.setAge(-5); // Outputs: Age cannot be negative.
+    }
+}
+```
+
+#### Output:
+```
+Name: Alice
+Age: 25
+Age cannot be negative.
+```
+
+---
+
+### **Advantages of Getters and Setters**
+
+1. **Controlled Access**:
+   - You can control how fields are accessed or modified.
+
+2. **Data Validation**:
+   - Protect fields from invalid values using setter logic.
+
+3. **Code Flexibility**:
+   - Future changes in the internal implementation won’t break the code.
+
+4. **Encapsulation**:
+   - Keeps the class's internal data safe and controlled.
+
+---
+
+### **Alternatives in Modern Java**
+
+#### 1. **Lombok Library**:
+   - Reduces boilerplate code for getters and setters using annotations.
+   ```java
+   import lombok.Getter;
+   import lombok.Setter;
+
+   public class Person {
+       @Getter @Setter
+       private String name;
+       @Getter @Setter
+       private int age;
+   }
+   ```
+
+#### 2. **Record Classes** (Java 14+):
+   - Automatically generates getter methods.
+   ```java
+   public record Person(String name, int age) {}
+   ```
+
+In this case, `Person` class will have read-only getters (`name()` and `age()`), and you don’t need to write the getter methods explicitly.
+
+---
+
+Let me know if you'd like further examples or explanations!

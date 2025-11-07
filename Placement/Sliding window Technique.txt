@@ -1,0 +1,54 @@
+
+
+Sliding Window- Sliding Window Technique is a method used to efficiently solve problems that involve 
+defining a window or range in the input data [list/strings] and then moving that window across the data 
+to perform some operation within the window.
+
+How to Identify Sliding Window — The basic idea behind the sliding window technique is to transform two nested
+ loops into a single loop.
+
+ Below are some fundamental clues to identify sliding window algorithm problems:
+
+    The problem will be based on an array, list or string type of data structure.
+    It will ask to find subranges in that array to give the longest, shortest or target values of a string.
+    Its concept is mainly based on ideas like the longest sequence or shortest sequence of something that 
+satisfies a given condition perfectly.
+
+
+
+    Using the Sliding Window Technique:
+
+The Sliding Window Technique is a powerful approach to efficiently solve problems involving arrays, strings, 
+or sequences by maintaining a moving “window” of elements and performing operations as the window slides
+ through the data. This technique helps reduce time complexity compared to brute-force methods.
+
+    Determine Window Size: Decide on a fixed window size that defines the number of elements to consider at each step.
+    Initialize and Process: Start with the initial elements within the window. Perform any initial calculations or operations.
+    Slide the Window: Iterate through the data, updating the window by adding the next element and removing the leftmost one.
+    Update and Evaluate: Adjust calculations or data structures based on the new element. Evaluate if the current window meets 
+  the problem’s conditions.
+    Continue Sliding: Repeat the sliding, updating, and evaluation steps until the end of the data is reached.
+    Return Result: Return the final result or outcome based on the processed windows.
+
+
+
+    Time and Space complexity of the sliding window technique:
+
+    Time Complexity: The time complexity of the sliding window technique is usually linear or close to linear, O(n), where n is the 
+size of the input data structure (e.g., array or string). This is because you process each element once as the window slides through the data.
+
+    Space Complexity: The space complexity of the sliding window technique is generally constant, O(1),
+ because you’re maintaining a fixed-size window and a few additional variables to perform calculations or store intermediate results. 
+The amount of extra memory used doesn’t grow with the input size; it remains constant regardless of the input size.
+
+
+Applications 
+Data transfer
+Computer networks
+ It is utilized for flow control in the TCP (Transmission Control Protocol). In addition, this method may be used to construct a variety of competitive issues. 
+
+
+
+
+
+

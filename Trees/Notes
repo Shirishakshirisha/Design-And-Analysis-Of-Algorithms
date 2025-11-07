@@ -1,0 +1,25 @@
+Types of trees
+1. Full Binary Tree (0 or 2 children)
+2. Complete Binary tree(All levels shoul be completely filled except the last level and also last level should fil fron left)
+3. Perfect Binary Tree (All leaf node are at the same level)
+4. Balanced Binary Tree (Height can be a maximum of log(n) where n = nodes (+-1(the height difference)))
+5. Degenerate Tree (Skew Binary Tree)
+
+**************************
+Binary tree Repsentation *
+**************************
+* LinkedsList
+
+
+
+
+********************8
+Traversal
+2 Types
+
+1. BFS
+2. DFS
+
+INORDER TRAVERSAL(left root right)(go to extreme left of subtree and then go to right extreme right subtree)
+Preorder Traversal(root left right)(print root first then left then rigth)
+Postprder traversal(left right root)

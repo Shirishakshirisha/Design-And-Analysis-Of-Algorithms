@@ -1,0 +1,105 @@
+Poly = many: polygon = many-sided, polystyrene = many styrenes (a), polyglot = many languages, and so on.
+Morph = change or form: morphology = study of biological form, Morpheus = the Greek god of dreams, able to take any form.
+
+So, polymorphism is the ability (in programming) to present the same "interface" for differing underlying forms (data types).
+ Note that the word "interface" here refers to the way in which a class is used,
+ not necessarily the specific interface concept found in some object-oriented languages.
+
+ For example, in many languages, integers and floats are implicitly polymorphic since you can add, subtract, multiply and so on, 
+ irrespective of the fact that the types are different: result = 3.1 + 7.
+
+But, in that same way, classes like BigDecimal, Rational, Imaginary, or Matrix, 
+can also provide those operations, even though they may operate on vastly different underlying data types.
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+// Abstract base class
+abstract class Vehicle {
+    public abstract int getWheels();
+}
+
+// Derived classes
+class Bicycle extends Vehicle {
+    @Override
+    public int getWheels() {
+        return 2;
+    }
+}
+
+class Car extends Vehicle {
+    @Override
+    public int getWheels() {
+        return 4;
+    }
+}
+
+class Truck extends Vehicle {
+    @Override
+    public int getWheels() {
+        return 18;
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        List<Vehicle> vehicles = new ArrayList<>();
+
+        vehicles.add(new Bicycle());
+        vehicles.add(new Car());
+        vehicles.add(new Truck());
+
+        for (Vehicle v : vehicles) {
+            System.out.println("A " + v.getClass().getSimpleName() +
+                               " has " + v.getWheels() + " wheels.");
+        }
+    }
+}
+// This code demonstrates polymorphism by using a common interface (Vehicle)
+// to interact with different types of vehicles (Bicycle, Car, Truck).
+public static void main(String[] args) {
+    Vehicle bicycle = new Bicycle();
+    Vehicle car = new Car();
+    Vehicle truck = new Truck();
+
+    System.out.println("A " + bicycle.getClass().getSimpleName() +
+                       " has " + bicycle.getWheels() + " wheels.");
+    System.out.println("A " + car.getClass().getSimpleName() +
+                       " has " + car.getWheels() + " wheels.");
+    System.out.println("A " + truck.getClass().getSimpleName() +
+                       " has " + truck.getWheels() + " wheels.");
+}
+
+
+
+The code
+ Vehicle bicycle = new Bicycle(); 
+ is a core concept in object-oriented programming (OOP) demonstrating polymorphism, inheritance, and upcasting. 
+Context: Inheritance
+This line of code assumes that you have a class structure with an inheritance relationship. 
+Vehicle is the superclass (or parent class).
+Bicycle is the subclass (or child class) that inherits from Vehicle. 
+The "is-a" test must pass for this to be valid: a Bicycle is a Vehicle. This makes logical sense since a bicycle is a type of vehicle. 
+Step-by-step breakdown
+new Bicycle(): This part creates a new instance (an object) of the Bicycle class in memory. 
+This object has all the properties and methods
+ defined in the Bicycle class, as well as all the inherited properties and methods from its superclass, Vehicle.
+Vehicle bicycle: This part declares a new reference variable named bicycle with the type Vehicle. This variable can hold a 
+reference to any object that is of type Vehicle or any of its subclasses.
+=: The assignment operator connects the reference variable to the newly created object. The variable bicycle now points to 
+the Bicycle object created in memory. 
+Key OOP concepts involved
+Upcasting
+This is the process of automatically and safely converting a subclass object to a superclass reference. 
+What happens: The Bicycle object is "upcast" to a Vehicle reference. The conversion is implicit (done automatically by the compiler) 
+because a subclass is guaranteed to contain all the features of its superclass, so this is a safe operation.
+What you can access: After upcasting, you can only access the methods and variables that are defined in the Vehicle class (the reference type). 
+Any methods or variables unique to the Bicycle subclass are not accessible through the bicycle variable, though they still exist within the object itself. 
+Polymorphism
+Polymorphism means "many forms" and allows a single interface to be used for a general class of actions. 
+How it applies: The variable bicycle, declared as a Vehicle, can hold a reference to different types of Vehicle objects, like Bicycle, Car, or Motorcycle.
+Dynamic method dispatch: This is a powerful feature of runtime polymorphism. If both the Vehicle class and the Bicycle class have a method with the same signature (e.g., move()),
+ the program will call the overridden version in the Bicycle class at runtime. The Java Virtual Machine (JVM) determines the correct method to execute based on the actual object's
+  type, not the reference variable's type. 

@@ -1,0 +1,5 @@
+numRows = grid.length:
+The length property of a 2D array in Java gives the number of rows in the grid. This is required to iterate over the rows of the grid and also to ensure that we don't go out of bounds when performing DFS.
+
+numCols = grid[0].length:
+The number of columns in the grid is found by accessing the length of the first row (grid[0].length). This is because every row in the grid will have the same number of columns. This is needed to navigate through each row and column when we’re searching for islands or checking adjacent cells.

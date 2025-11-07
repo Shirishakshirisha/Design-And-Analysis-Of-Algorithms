@@ -1,0 +1,118 @@
+The given code is an efficient implementation of the problem using a **HashMap**. It avoids sorting and works by maintaining a count of numbers and their complements needed to form a valid pair that sums to `k`.
+
+---
+
+### **Key Concepts**
+
+1. **Complementary Pairs**:
+   - For each number `num` in the array, its **complement** is `k - num`.
+   - If the complement exists in the map, then `num` and its complement can form a pair that sums to `k`.
+
+2. **HashMap for Frequency Tracking**:
+   - The `HashMap` is used to keep track of the frequency of numbers that have been seen but not yet paired.
+   - Key: The number itself.
+   - Value: The count of occurrences of that number.
+
+---
+
+### **How It Works**
+
+1. **Iterate Through the Array**:
+   - For each number `num`, calculate its complement: `complement = k - num`.
+
+2. **Check for Complement**:
+   - If the complement exists in the map (frequency > 0):
+     - A pair is formed: `num + complement = k`.
+     - Increment the count of valid pairs: `count++`.
+     - Decrease the frequency of the complement in the map (`map.put(complement, map.get(complement) - 1)`).
+   - If the complement does **not** exist in the map:
+     - Add `num` to the map or update its frequency (`map.put(num, map.getOrDefault(num, 0) + 1)`).
+
+3. **Return the Count**:
+   - After processing all elements, the `count` contains the total number of valid pairs.
+
+---
+
+### **Code Walkthrough**
+
+#### Input: 
+`nums = [3, 1, 3, 4, 3]`, `k = 6`
+
+#### Execution Steps:
+1. **Initialize**:
+   - `map = {}` (empty at the start).
+   - `count = 0`.
+
+2. **Process Each Number**:
+   - **For `num = 3`**:
+     - Complement: `6 - 3 = 3`.
+     - Complement not in `map`. Add `3` to `map`: `map = {3: 1}`.
+   - **For `num = 1`**:
+     - Complement: `6 - 1 = 5`.
+     - Complement not in `map`. Add `1` to `map`: `map = {3: 1, 1: 1}`.
+   - **For `num = 3`**:
+     - Complement: `6 - 3 = 3`.
+     - Complement exists in `map` with frequency 1.
+     - Pair found: `3 + 3 = 6`.
+     - Increment `count = 1`. Decrease frequency of `3` in `map`: `map = {3: 0, 1: 1}`.
+   - **For `num = 4`**:
+     - Complement: `6 - 4 = 2`.
+     - Complement not in `map`. Add `4` to `map`: `map = {3: 0, 1: 1, 4: 1}`.
+   - **For `num = 3`**:
+     - Complement: `6 - 3 = 3`.
+     - Complement not in `map` (frequency 0). Add `3` to `map`: `map = {3: 1, 1: 1, 4: 1}`.
+
+3. **Final Count**:
+   - Total pairs: `count = 1`.
+
+---
+
+### **Advantages of HashMap Approach**
+1. **No Sorting Needed**:
+   - Unlike the two-pointer approach, it works on unsorted arrays directly.
+
+2. **Efficient**:
+   - Time complexity: \(O(n)\), where \(n\) is the length of the array.
+     - Each element is processed once, and map operations (`get`, `put`) are \(O(1)\).
+   - Space complexity: \(O(n)\), for storing frequencies in the map.
+
+---
+
+### **Example Execution**
+
+#### Input:
+`nums = [1, 2, 3, 4]`, `k = 5`
+
+#### Execution Steps:
+1. **Initialize**:
+   - `map = {}`, `count = 0`.
+
+2. **Process Each Number**:
+   - **For `num = 1`**:
+     - Complement: `5 - 1 = 4`. Not in `map`.
+     - Add `1` to `map`: `map = {1: 1}`.
+   - **For `num = 2`**:
+     - Complement: `5 - 2 = 3`. Not in `map`.
+     - Add `2` to `map`: `map = {1: 1, 2: 1}`.
+   - **For `num = 3`**:
+     - Complement: `5 - 3 = 2`. Found in `map` (frequency 1).
+     - Pair found: `3 + 2 = 5`.
+     - Increment `count = 1`. Decrease frequency of `2`: `map = {1: 1, 2: 0}`.
+   - **For `num = 4`**:
+     - Complement: `5 - 4 = 1`. Found in `map` (frequency 1).
+     - Pair found: `4 + 1 = 5`.
+     - Increment `count = 2`. Decrease frequency of `1`: `map = {1: 0, 2: 0}`.
+
+3. **Final Count**:
+   - `count = 2`.
+
+---
+
+### **Output for Example**
+- `nums = [1, 2, 3, 4]`, `k = 5` → **Output: `2`**
+
+---
+
+### **Summary**
+- This approach efficiently tracks pairs using a HashMap to store frequencies of elements.
+- It reduces the time complexity to \(O(n)\), making it suitable for larger arrays.
