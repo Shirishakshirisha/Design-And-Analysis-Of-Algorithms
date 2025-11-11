@@ -1,16 +1,17 @@
 import java.util.*;
 
-
-
 public class Main {
-    public static void main(String[] args){
-        System.out.println("The graph for the bfs");
+    public static void main(String[] args) {
+        System.out.println("Building graph for DFS...");
         ArrayList<ArrayList<Integer>> g = new ArrayList<>();
         int n = 9;
-        System.out.println("Enter the number of vertices in the array : " + n);
-        for(int i=0; i<=n; i++){
-           g.add(new ArrayList<>());
+        System.out.println("Number of vertices: " + n);
+
+        for (int i = 0; i <= n; i++) {
+            g.add(new ArrayList<>());
         }
+
+        // Graph edges (1-indexed)
         g.get(1).add(2);
         g.get(1).add(6);
         g.get(2).add(1);
@@ -28,25 +29,20 @@ public class Main {
         g.get(7).add(8);
         g.get(8).add(5);
         g.get(8).add(7);
-        g.get(9).add(6); 
+        g.get(9).add(6);
 
-
-
-
-
-        for(int i=1; i<g.size(); i++){
-        System.out.println("Node " + i + "is connected to : ");
-        for(Integer neighbor : g.get(i)){
-            System.out.println(neighbor + " ");
+        // Display adjacency list
+        for (int i = 1; i < g.size(); i++) {
+            System.out.print("Node " + i + " is connected to: ");
+            for (Integer neighbor : g.get(i)) {
+                System.out.print(neighbor + " ");
+            }
+            System.out.println();
         }
-        System.out.println();
+
+        // Run DFS
+        System.out.println("\nDFS Traversal starting from node 1:");
+        Dfs dfsObj = new Dfs();
+        dfsObj.dfs(g, 1);
     }
-
-    Bfs bfsObj = new Bfs();
-        bfsObj.bfs(g, 1); // Start BFS from node 1
-
-
-    }
-    
-    
 }

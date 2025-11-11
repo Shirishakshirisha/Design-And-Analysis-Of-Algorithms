@@ -1,7 +1,8 @@
 import java.util.*;
 
 public class Bfs {
-    public void bfs(ArrayList<ArrayList<Integer>> g, int start) {
+
+   public void bfs(ArrayList<ArrayList<Integer>> g, int start) {
         boolean[] visited = new boolean[g.size()];
         Queue<Integer> queue = new LinkedList<>();
 
@@ -22,4 +23,25 @@ public class Bfs {
             }
         }
     }
-}
+
+    }
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
